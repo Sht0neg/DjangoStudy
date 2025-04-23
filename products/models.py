@@ -4,6 +4,13 @@ class Author(models.Model):
     name = models.CharField(verbose_name="Полное имя автора", max_length=80)
     bio = models.TextField(verbose_name="Краткая биография автора")
 
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = "Автор"
+        verbose_name_plural = "Авторы"
+
 class Book(models.Model):
     title = models.CharField(verbose_name="Название", max_length=120)
     desc = models.TextField(verbose_name="Описание")
@@ -15,3 +22,9 @@ class Book(models.Model):
 
     authors = models.ManyToManyField(Author, related_name="books", verbose_name="Автор(ы)")
 
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Книга"
+        verbose_name_plural = "Книги"
