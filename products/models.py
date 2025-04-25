@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Author(models.Model):
     name = models.CharField(verbose_name="Полное имя автора", max_length=80)
@@ -28,3 +29,17 @@ class Book(models.Model):
     class Meta:
         verbose_name = "Книга"
         verbose_name_plural = "Книги"
+
+class Review(models.Model):
+    content = models.TextField(verbose_name="Содержимое отзыва")
+
+    date_create = models.DateTimeField(verbose_name="Дата добавления", auto_now_add=True)
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username + " " + self.date_create
+
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"
