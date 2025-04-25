@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
     <title>Главная</title>
 </head>
 <body>
     <h1>Главная</h1>
     <p>Добро пожаловать на наш сайт!</p>
-    {% for book in books %}
+    <div class="wrap">
+        {% for book in books %}
         <div class="card">
             <h2 class="title-card">{{book.title}}</h2>
             <p class="desc-card">{{book.desc}}</p>
         </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </body>
 </html>
