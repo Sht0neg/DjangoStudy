@@ -35,7 +35,7 @@ class Review(models.Model):
 
     date_create = models.DateTimeField(verbose_name="Дата добавления", auto_now_add=True)
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_query_name="reviews")
 
     def __str__(self):
         return self.user.username + " " + self.date_create
