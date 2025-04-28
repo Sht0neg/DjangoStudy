@@ -3,3 +3,6 @@ from products.models import Book
 def index(req):
     books = Book.objects.all()
     return render(req, 'index.html', {"books" : books})
+
+def catalog(req):
+    return render(req, "catalog.html")

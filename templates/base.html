@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Главная</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'index' %}"><h1>Главная</h1></a>
+            <a href="{% url 'catalog' %}"><h1>Каталог</h1></a>
+            <a href=""><h1>О нас</h1></a>
+        </nav>
+        <div class="auth">
+            {% if user.is_authentificated %}
+                <h2>{{user.username}}</h2>
+            {% else %}
+            <a href="">Войти</a>
+            <a href="">Регистрация</a>
+            {% endif %}
+        </div>
+    </header>
+    {% block main %}
+
+    {% endblock main %}
+</body>
+</html>
