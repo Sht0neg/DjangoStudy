@@ -11,7 +11,7 @@ class IndexListView(ListView):
 def catalog(request: HttpRequest):
     author = request.GET.get("author")
     if (author):
-        books = Book.objects.filter(author=author)
+        books = Book.objects.filter(authors=author)
     else:
         books = Book.objects.all()
     return render(request, "catalog.html", {"books":books})

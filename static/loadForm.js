@@ -1,6 +1,7 @@
 async function loadAuthors() {
-    const res = await fetch("/products/all-authors")
+    const res = await fetch("/products/all-authors/")
     const data = await res.json()
+    console.log(data)
     data.forEach(author => {
         const option = document.createElement("option")
         option.textContent = author.name
