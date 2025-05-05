@@ -11,6 +11,11 @@ class Author(models.Model):
     class Meta:
         verbose_name = "Автор"
         verbose_name_plural = "Авторы"
+    def parse_object(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+        }
 
 class Book(models.Model):
     title = models.CharField(verbose_name="Название", max_length=120)
@@ -43,3 +48,5 @@ class Review(models.Model):
     class Meta:
         verbose_name = "Отзыв"
         verbose_name_plural = "Отзывы"
+
+

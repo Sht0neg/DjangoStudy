@@ -28,7 +28,7 @@ body{
     margin-bottom: 20px;
 }
 
-.desc.card{
+.desc-card{
     height: 220px;
     overflow-y: scroll;
 }
