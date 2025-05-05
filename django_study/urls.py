@@ -21,5 +21,6 @@ from django_study.views import index_redirect
 urlpatterns = [
     path("", index_redirect),
     path('admin/', admin.site.urls),
-    path("products/", include("products.urls"))
+    path("products/", include("products.urls")),
+    path("user/", include("user.urls")),
 ]
