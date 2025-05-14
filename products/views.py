@@ -2,6 +2,7 @@ from django.shortcuts import render
 from products.models import *
 from django.views.generic import ListView
 from django.http import HttpRequest, JsonResponse
+from django.urls import reverse
 
 class IndexListView(ListView):
     model = Book
@@ -15,6 +16,12 @@ def catalog(request: HttpRequest):
     else:
         books = Book.objects.all()
     return render(request, "catalog.html", {"books":books})
+
+def book_card(request: HttpRequest, pk: int):
+    if (pk):
+        book = Book.objects.get(id=pk)
+        return render(request, "book_card.html", {"book":book})
+    return reverse("catalog")
 
 def api_get_all_author(request):
     authors = Author.objects.all()

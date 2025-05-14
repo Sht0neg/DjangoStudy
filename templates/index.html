@@ -8,6 +8,7 @@
         <div class="card">
             <h2 class="title-card">{{book.title}}</h2>
             <p class="desc-card">{{book.desc}}</p>
+            <a href="{% url 'book' book.id %}">Больше информации</a>
         </div>
         {% endfor %}
     </div>
