@@ -3,5 +3,5 @@
 {% block main %}
     <h2>Название: {{book.title}}</h2>
     <h2>Описание: {{book.desc}}</h2>
-    <h2>Автор: {{book.author.name}}</h2>
+    <a class="book_card_url" href="{% url 'author' author.id %}">Автор: {{author.name}}</a>
 {% endblock main %}

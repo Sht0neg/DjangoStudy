@@ -20,8 +20,16 @@ def catalog(request: HttpRequest):
 def book_card(request: HttpRequest, pk: int):
     if (pk):
         book = Book.objects.get(id=pk)
-        return render(request, "book_card.html", {"book":book})
+        author = Author.objects.filter(books=book)[0]
+        return render(request, "book_card.html", {"book":book, "author":author})
     return reverse("catalog")
+
+def author_card(request: HttpRequest, pk: int):
+    print(pk)
+    if (pk):
+        author = Author.objects.get(id=pk)
+        books = Book.objects.filter(authors=author)
+        return render(request, "author_card.html", {"author":author, "books":books})
 
 def api_get_all_author(request):
     authors = Author.objects.all()

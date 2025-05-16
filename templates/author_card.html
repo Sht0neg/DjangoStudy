@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h2>Имя: {{author.name}}</h2>
+    <h2>Биография: {{author.bio}}</h2>
+    <h2>Книги автора: </h2>
+    {% for book in books %}
+            <h2 class="title-card">{{book.title}}</h2>
+    {% endfor %}
+{% endblock main %}
