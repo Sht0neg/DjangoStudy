@@ -24,6 +24,9 @@ def book_card(request: HttpRequest, pk: int):
         return render(request, "book_card.html", {"book":book, "author":author})
     return reverse("catalog")
 
+def about(req):
+    return render(req, "about.html")
+
 def author_card(request: HttpRequest, pk: int):
     print(pk)
     if (pk):

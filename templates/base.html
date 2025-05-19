@@ -11,7 +11,7 @@
         <nav>
             <a href="{% url 'index' %}"><h1>Главная</h1></a>
             <a href="{% url 'catalog' %}"><h1>Каталог</h1></a>
-            <a href=""><h1>О нас</h1></a>
+            <a href="{% url 'about' %}"><h1>О нас</h1></a>
         </nav>
         <div class="auth">
             {% if user.is_authenticated %}

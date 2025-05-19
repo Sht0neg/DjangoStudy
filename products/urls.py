@@ -7,4 +7,5 @@ urlpatterns = [
     path("all-authors/", api_get_all_author, name="api_all_authors"),
     path("<int:pk>/", book_card, name="book"),
     path("author/<int:pk>", author_card, name="author"),
+    path("about/", about, name="about"),
 ]
