@@ -11,4 +11,18 @@ async function loadAuthors() {
     });
 }
 
+async function loadDates() {
+    const res = await fetch("/products/dates/")
+    const data = await res.json()
+    console.log(data)
+    data.forEach(date => {
+        const option = document.createElement("option")
+        option.textContent = date
+        option.setAttribute("value", date)
+        const selectEl = document.querySelector("#date")
+        selectEl.appendChild(option)
+    });
+}
+
 loadAuthors()
+loadDates()

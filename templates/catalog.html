@@ -6,6 +6,11 @@
         <select name="author" id="author"></select>
         <input type="submit" value="Найти">
     </form>
+    <form class="panel-filter" method="get">
+        <label for="date">Дата публикации:</label>
+        <select name="date" id="date"></select>
+        <input type="submit" value="Найти">
+    </form>
     <div class="wrap">
         {% for book in books %}
         <div class="card">

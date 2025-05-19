@@ -3,6 +3,7 @@ from products.models import *
 from django.views.generic import ListView
 from django.http import HttpRequest, JsonResponse
 from django.urls import reverse
+from datetime import *
 
 class IndexListView(ListView):
     model = Book
@@ -11,8 +12,13 @@ class IndexListView(ListView):
 
 def catalog(request: HttpRequest):
     author = request.GET.get("author")
-    if (author):
+    date = request.GET.get("date")
+    if (author and date):
+        books = Book.objects.filter(publication_date__gte=datetime.strptime(str(date), '%Y')) & Book.objects.filter(authors=author)
+    elif(author):
         books = Book.objects.filter(authors=author)
+    elif(date):
+        books = Book.objects.filter(publication_date__gte=datetime.strptime(str(date), '%Y'))
     else:
         books = Book.objects.all()
     return render(request, "catalog.html", {"books":books})
@@ -41,4 +47,9 @@ def author_card(request: HttpRequest, pk: int):
 def api_get_all_author(request):
     authors = Author.objects.all()
     dataList = [author.parse_object() for author in authors]
+    return JsonResponse(dataList, safe=False)
+
+def api_get_all_dates(request):
+    books = Book.objects.all()
+    dataList = list(set([book.publication_date.year for book in books]))
     return JsonResponse(dataList, safe=False)
