@@ -27,6 +27,10 @@ def book_card(request: HttpRequest, pk: int):
 def about(req):
     return render(req, "about.html")
 
+def review(req):
+    reviews = Review.objects.all()
+    return render(req, "review.html", {"reviews":reviews})
+
 def author_card(request: HttpRequest, pk: int):
     print(pk)
     if (pk):

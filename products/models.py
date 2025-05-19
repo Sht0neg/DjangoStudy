@@ -43,7 +43,7 @@ class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_query_name="reviews")
 
     def __str__(self):
-        return self.user.username + " " + self.date_create
+        return self.user.username + " " + self.date_create.strftime('%Y-%m-%d')
 
     class Meta:
         verbose_name = "Отзыв"

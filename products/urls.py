@@ -8,4 +8,5 @@ urlpatterns = [
     path("<int:pk>/", book_card, name="book"),
     path("author/<int:pk>", author_card, name="author"),
     path("about/", about, name="about"),
+    path("review/", review, name="review"),
 ]

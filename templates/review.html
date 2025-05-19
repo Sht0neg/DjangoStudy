@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block main %}
+    <div class="review_cards">
+        {% for review in reviews %}
+        <div class="review_card">
+            <h2>Содержание:</h2>
+            <p class="review_content">{{review.content}}</p>
+            <h2>Пользователь: </h2>
+            <p class="review_content">{{review.user.username}}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock main %}
