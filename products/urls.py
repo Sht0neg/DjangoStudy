@@ -10,4 +10,6 @@ urlpatterns = [
     path("about/", about, name="about"),
     path("review/", review, name="review"),
     path("dates/", api_get_all_dates, name="api_all_dates"),
+    path("cart/<int:pk>", cart, name="cart"),
+    path("catalog/add-book-to-cart/<int:book_id>", add_book_to_cart, name="add_book_to_cart"),
 ]

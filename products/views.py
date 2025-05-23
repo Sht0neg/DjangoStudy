@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from products.models import *
 from django.views.generic import ListView
 from django.http import HttpRequest, JsonResponse
@@ -53,3 +53,14 @@ def api_get_all_dates(request):
     books = Book.objects.all()
     dataList = list(set([book.publication_date.year for book in books]))
     return JsonResponse(dataList, safe=False)
+
+def cart(reg):
+    pass
+
+def add_book_to_cart(req:HttpRequest, book_id:int):
+    book = Book.objects.get(id=book_id)
+    user = req.user
+    cart = Cart(user=user)
+    cart.save()
+    cart.books.set([book,])
+    return redirect(reverse("catalog"))

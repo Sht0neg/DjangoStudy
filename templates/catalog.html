@@ -17,6 +17,10 @@
             <h2 class="title-card">{{book.title}}</h2>
             <p class="desc-card">{{book.desc}}</p>
             <a class="book_card_url" href="{% url 'book' book.id %}">Больше информации</a>
+            <form action="{% url "add_book_to_cart" book.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Добавить в корзину">
+            </form>
         </div>
         {% endfor %}
     </div>

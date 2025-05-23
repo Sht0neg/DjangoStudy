@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+
+
 class Author(models.Model):
     name = models.CharField(verbose_name="Полное имя автора", max_length=80)
     bio = models.TextField(verbose_name="Краткая биография автора")
@@ -28,6 +31,7 @@ class Book(models.Model):
 
     authors = models.ManyToManyField(Author, related_name="books", verbose_name="Автор(ы)")
 
+
     def __str__(self):
         return self.title
 
@@ -50,4 +54,6 @@ class Review(models.Model):
         verbose_name = "Отзыв"
         verbose_name_plural = "Отзывы"
 
-
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_query_name="cart")
+    books = models.ManyToManyField(Book, related_name="carts", blank=False, null=True)
